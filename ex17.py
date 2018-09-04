@@ -11,7 +11,7 @@ in_file = open(from_file)
 indata = in_file.read() #you can simply just do indata = open(from_file).read()
 
 #confirms the size of input file
-print(f"The input file is {len(indata)} bytes long")
+print(f"The input file is {len(indata)} bytes long") #len() is length of the string as a number
 
 #checks if to file exists
 print(f"Does the output file exist? {exists(to_file)}")
