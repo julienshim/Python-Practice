@@ -1,4 +1,4 @@
-name = 'Jerauld Manansala'
+name = 'Julien Shim'
 age = 34
 height = 72 #inches 
 height_converted_to_centimeters = round(height * 2.54) #centimeters
