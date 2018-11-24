@@ -1,3 +1,3 @@
-# Python-Practice
+# Python Practice
 
 Playground for practicing Python.
