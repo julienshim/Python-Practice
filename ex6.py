@@ -22,7 +22,7 @@ joke_evaluation = "Isn't that joke so funny?! {}"
 print(joke_evaluation.format(hilarious))
 
 #2 variables and combined with printed
-w = "This is the left side of..."
+w = "This is the left side of... "
 e = "a string with a ride side."
 
 print(w + e)
