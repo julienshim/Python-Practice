@@ -15,9 +15,9 @@ while y == 0:  # make sure y isn't zero              #|   /
 
 if x > 0 and y > 0:
     print("both positive")
-elif x <= 0 and y <= 0:
+elif x < 0 and y < 0:
     print("both negative")
-elif x > 0 and y <= 0:
+elif x > 0 and y < 0:
     print("x is positive and y is negative")
 else:
     print("y is positive and x is negative")
