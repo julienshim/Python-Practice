@@ -12,7 +12,7 @@ validMoves = {
 for move in movesList:
   print(f'...{move}...')
 
-player = input("Player's choice: ").lower()
+player = input("Player, make your choice: ").lower()
 # not sure why randomint was recommended when choice removes a lot of steps.
 computer = choice(movesList)
 
@@ -23,7 +23,7 @@ if not player in validMoves:
 if not computer in validMoves:
   computer = False
 
-print("SHOOT!")
+print(f"Computer players {computer}.")
 
 def result(win_res, los_res, winner):
   win_res = win_res.lower().capitalize()
