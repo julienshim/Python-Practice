@@ -9,3 +9,5 @@ for num in range(10, 21):
     if (num % 2 == 1):
         x += num
 print(x)
+
+#range step would be range(11, 21, 2)
