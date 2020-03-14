@@ -29,6 +29,9 @@ def result(win_res, los_res, winner):
   win_res = win_res.lower().capitalize()
   los_res = los_res.lower()
   print(f'{win_res} beats {los_res}. {winner} wins!')
+  if (winner == 'player') {
+    player_wins
+  }
 
 
 if player and computer:
