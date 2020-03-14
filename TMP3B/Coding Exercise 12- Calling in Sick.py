@@ -11,7 +11,7 @@ sick_days = randint(0, 10)
 # NO TOUCHING ======================================
 
 
-calling_in_sick = None  # set this to True or False with Boolean Logic and Conditionals!
+calling_in_sick = None  # set this to True or False with Boolean Logic and Conditionals! # noqa
 
 # YOUR CODE GOES HERE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 

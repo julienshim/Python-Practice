@@ -1,8 +1,7 @@
 # NO TOUCHING ======================================
 from random import randint
-num = randint(1, 1000) #picks random number from 1-1000
+num = randint(1, 1000)  # picks random number from 1-1000
 # NO TOUCHING ======================================
-
 
 
 # YOUR CODE GOES HERE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv

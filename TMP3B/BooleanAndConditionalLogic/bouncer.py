@@ -1,4 +1,4 @@
-#ask for age
+# ask for age
 # print("How old are you?")
 # age = input()
 # if age:
@@ -18,12 +18,12 @@
 print("How old are you?")
 age = input()
 if age:
-  age = int(age)
-  if age >= 21:
-    print("You are good to enter and can drink!")
-  elif age >= 18:
-    print("You can enter, but need a wristband!")
-  else:
-    print("You can't drink, little one!")
+    age = int(age)
+    if age >= 21:
+        print("You are good to enter and can drink!")
+    elif age >= 18:
+        print("You can enter, but need a wristband!")
+    else:
+        print("You can't drink, little one!")
 else:
-  print("Please enter an age!")
+    print("Please enter an age!")

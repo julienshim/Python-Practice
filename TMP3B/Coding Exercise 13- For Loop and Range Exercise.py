@@ -10,4 +10,4 @@ for num in range(10, 21):
         x += num
 print(x)
 
-#range step would be range(11, 21, 2)
+# range step would be range(11, 21, 2)

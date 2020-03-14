@@ -1,4 +1,4 @@
- # Set the message variable equal to any string containing a new-line escape sequence
+# Set the message variable equal to any string containing a new-line escape sequence # noqa
 message = "new\nline"
 
 
@@ -7,6 +7,6 @@ message = "new\nline"
 mountains = "/\\/\\/\\"
 
 
-# Set the quotation variable to any string that contains an escaped double quotation mark
+# Set the quotation variable to any string that contains an escaped double quotation mark # noqa
 
 quotation = "\"air\" quotes"
