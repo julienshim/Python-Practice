@@ -47,3 +47,13 @@ print('start from index one, minus one steps', start_index_one_minus_one)
 print('start from the end, minus one steps, until index one',
       start_from_end_until_index_one_by_minus_one)
 print('start at index two, minus one steps', start_index_two_minus_one)
+
+# tricks with slices
+
+forwards = "This is a string!"
+print('fowards', forwards)
+print('forwards reverse', forwards[::-1])
+
+numbers = [1, 2, 3, 4, 5]
+numbers[1:3] = ['a', 'b', 'c']
+print('replace index one to exclusive three with a b c ', numbers)
