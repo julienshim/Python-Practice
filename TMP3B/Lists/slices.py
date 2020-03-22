@@ -57,3 +57,8 @@ print('forwards reverse', forwards[::-1])
 numbers = [1, 2, 3, 4, 5]
 numbers[1:3] = ['a', 'b', 'c']
 print('replace index one to exclusive three with a b c ', numbers)
+
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+reverse_index_five = colors[5][::-1]  # take index five and reverse it
+print('should be ogidni', reverse_index_five)
+print('og array', colors)
