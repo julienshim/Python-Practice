@@ -5,5 +5,19 @@ cat = {
 }
 
 
+print(cat.get('name'))
+kitten = cat.copy()
+print(cat == kitten)
+print(cat is kitten)
+
 cat.clear()
 print(cat)
+
+abc = {}.fromkeys(["a", "b", "c"], "unknown")
+a = {}.fromkeys("a", [1, 2, 3, 4, 5])
+s = {}.fromkeys('abcdef', "false")
+r = {}.fromkeys(range(1, 10), "true")
+print(abc)
+print(a)
+print(s)
+print(r)
