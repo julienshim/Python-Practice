@@ -4,8 +4,9 @@ cat = {
     "isCute": True,
 }
 
-
 print(cat.get('name'))
+print(cat.get('weight'))  # None
+
 kitten = cat.copy()
 print(cat == kitten)
 print(cat is kitten)
