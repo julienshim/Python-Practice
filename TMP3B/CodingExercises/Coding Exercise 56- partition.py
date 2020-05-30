@@ -7,9 +7,10 @@ partition([1,2,3,4], isEven) # [[2,4],[1,3]]
 
 
 def partition(collection, isEven):
-    even = [num for num in collection if num % 2 == 0]
-    odd = [num for num in collection if num % 2 != 0]
+    even = [num for num in collection if isEven(num)]
+    odd = [num for num in collection if not isEven(num)]
     return [even, odd] if isEven else [odd, even]
+
 
 # alt1 traditional version
 # def partition(lst, fn):
