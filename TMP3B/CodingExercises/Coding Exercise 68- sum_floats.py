@@ -6,3 +6,6 @@ sum_floats(1,2,3,4,5) # 0
 
 def sum_floats(*args):
     return sum([arg for arg in args if type(arg) == float])
+
+# alt don't need square brackets
+    #     return sum([arg for arg in args if type(arg) == float])
