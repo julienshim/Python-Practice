@@ -24,19 +24,21 @@
 # finally:
 #     print("Finally runs no matter what.")
 
-def divide(a,b):
+
+def divide(a, b):
     try:
         result = a / b
     # except ZeroDivisionError:
     except (ZeroDivisionError, TypeError) as err:
         # print("Don't divide by zero, please.")
-    # except TypeError as err:
+        # except TypeError as err:
         # print('A and B must Ints or Floats.')
         print('Something went wrong!')
         print(err)
     else:
         print(f'{a} divided by {b} is {result}')
 
-print(divide(1,'a'))
+
+print(divide(1, 'a'))
 # print(divide(1,0))
-print(divide(1,0))
+print(divide(1, 0))
