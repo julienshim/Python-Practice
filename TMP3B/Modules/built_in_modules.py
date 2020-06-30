@@ -11,3 +11,9 @@ from random import choice, randint
 
 print(choice(["apple", "banana", "cherry", "durian"]))
 print(randint(1, 100))
+
+# import random
+# import random as omg_so_random
+# from random import *
+# from random import choice, shuffle
+# from random import choice as gimme_one, shuffle as mix_up_fruits
