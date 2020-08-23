@@ -6,6 +6,11 @@ class User:
     def display_active_users(cls):
         return f"There are currently {cls.active_users} active users."
 
+    @classmethod
+    def from_string(cls, data_str):
+        first, last, age = data_str.split(",")
+        return cls(first, last, int(age))
+
     def __init__(self, first, last, age):
         self.first = first
         self.last = last
@@ -44,9 +49,14 @@ class User:
 
 
 # print(user1.display_active_users())
-print(User.display_active_users())
+# print(User.display_active_users())
 
-user1 = User("Joe", "Smith", 68)
-user2 = User("Blanca", "Lopez", 41)
+# user1 = User("Joe", "Smith", 68)
+# user2 = User("Blanca", "Lopez", 41)
 
-print(User.display_active_users())
+# print(User.display_active_users())
+
+tom = User.from_string("Tom,Jones,89")
+print(tom.first)
+print(tom.full_name())
+print(tom.birthday())
