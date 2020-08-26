@@ -1,8 +1,14 @@
 class Card:
-    pass
-    # each instance of card should have a suit # noqa
-    # each instance of card should have a value  # noqa
-    # cards repr method should display the card's value and suit # noqa
+    # Each instance of Card  should have a suit # noqa
+    # Each instance of Card  should have a value  # noqa
+    def __init__(self, suit, value):
+        self.suit = suit
+        self.value = value
+
+    # Card 's __repr__  method should return the card's value and suit
+
+    def __repr__(self):
+        return f"{self.value} of {self.suit}"
 
 
 class Deck:
