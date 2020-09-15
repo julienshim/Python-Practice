@@ -47,8 +47,9 @@ class User:
             end = "th"
         return f"Happy {self.age}{end} Birthday, {self.first}!"
 
+
 class Moderator(User):
-    
+
     active_moderators = 0
 
     def __init__(self, first, last, age, community):
@@ -58,10 +59,11 @@ class Moderator(User):
 
     @classmethod
     def display_active_moderators(cls):
-        return f"There are currently {cls.active_moderators} active moderators."
+        return f"There are currently {cls.active_moderators} active moderators."  # noqa
 
     def remove_post(self):
-        return f"{self.full_name()} removed a post from the {self.community} community."
+        return f"{self.full_name()} removed a post from the {self.community} community."  # noqa
+
 
 u1 = User("Tom", "Garcia", 35)
 u2 = User("Tom", "Garcia", 35)
