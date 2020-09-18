@@ -1,5 +1,6 @@
 class Aquatic:
     def __init__(self, name):
+        print("aquatic")
         self.name = name
 
     def swim(self):
@@ -11,6 +12,7 @@ class Aquatic:
 
 class Ambulatory:
     def __init__(self, name):
+        print("ambulatory")
         self.name = name
 
     def walk(self):
@@ -22,13 +24,18 @@ class Ambulatory:
 
 class Penguin(Ambulatory, Aquatic):
     def __init(self, name):
+        print("penguin")
         super().__init__(name=name)
 
 
-jaws = Aquatic("Janws")
-lassie = Ambulatory("Lassie")
+# jaws = Aquatic("Janws")
+# lassie = Ambulatory("Lassie")
 captain_cook = Penguin("Captain Cook")
 
-print(captain_cook.swim())
-print(captain_cook.walk())
-print(captain_cook.greet())
+# print(captain_cook.swim())
+# print(captain_cook.walk())
+# print(captain_cook.greet())
+
+# print(f"captain_cook is instance of Peguin: {isinstance(captain_cook, Penguin)}")  # noqa
+# print(f"captain_cook is instance of Aquatic: {isinstance(captain_cook, Aquatic)}")  # noqa
+# print(f"captain_cook is instance of Ambulatory: {isinstance(captain_cook, Ambulatory)}")  # noqa
