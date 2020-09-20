@@ -3,7 +3,8 @@ class Train:
         self.num_cars = num_cars
 
     def __repr__(self):
-        return "{} car train".format(self.num_cars)
+        return "{} car train".format(self.num_cars)  # only for test
+        # return "{} car train".format(self.num_cars) # natural
 
     def __len__(self):
         return self.num_cars
