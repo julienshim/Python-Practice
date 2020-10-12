@@ -14,7 +14,9 @@ next(days) # StopIteration
 def week():
     days = ['Monday', 'Tuesday', 'Wednesday',
             'Thursday', 'Friday', 'Saturday', 'Sunday']
-    index = 0
-    while index < len(days):
-        yield days[index]
-        index += 1
+    # index = 0
+    # while index < len(days):
+    #     yield days[index]
+    #     index += 1
+    for day in days:
+        yield day
