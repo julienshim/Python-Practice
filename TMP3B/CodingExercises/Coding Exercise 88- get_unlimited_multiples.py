@@ -1,6 +1,6 @@
 '''
 sevens = get_unlimited_multiples(7)
-[next(sevens) for i in range(15)] 
+[next(sevens) for i in range(15)] # noqa
 # [7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98, 105]
 
 ones = get_unlimited_multiples()
