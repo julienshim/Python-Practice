@@ -15,3 +15,10 @@ def get_multiples(number=1, count=10):
     while multiplier <= count:
         yield number * multiplier
         multiplier += 1
+
+# alt instructor solve
+#     next_num = num
+#     while count > 0:
+#         yield next_num
+#         count -= 1
+#         next_num += num
