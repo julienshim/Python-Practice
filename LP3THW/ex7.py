@@ -1,7 +1,7 @@
 print("Mary had a little lamb.")
 print("Its fleece was white as {}".format('snow'))
 print("And everywhere that Mary went.")
-print("." * 10) #what'd that do? (prints . 10 times)
+print("." * 10)  # what'd that do? (prints . 10 times)
 
 end1 = "C"
 end2 = "h"
@@ -18,5 +18,6 @@ end12 = "r"
 
 
 # watch end = ' ' at the end. try removing it to see what happens
-print(end1 + end2 + end3 + end4 + end5 + end6, end=' ') # end=' ' add a space in between two prints and maintains same line rather than return
+# end=' ' add a space in between two prints and maintains same line rather than return # noqa
+print(end1 + end2 + end3 + end4 + end5 + end6, end=' ')
 print(end7 + end8 + end9 + end10 + end11 + end12)

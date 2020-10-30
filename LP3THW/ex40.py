@@ -1,11 +1,11 @@
-mystuff = {'apple': "I AM APPLES!"}
-print(mystuff['apple']) # dict style
-
 import ex40_mystuff
-ex40_mystuff.apple() # module style
+mystuff = {'apple': "I AM APPLES!"}
+print(mystuff['apple'])  # dict style
+
+ex40_mystuff.apple()  # module style
 
 # import ex40_mystuff
-print(ex40_mystuff.tangerine) # same thing, it's just variable
+print(ex40_mystuff.tangerine)  # same thing, it's just variable
 
 
 class MyStuff(object):
@@ -16,12 +16,11 @@ class MyStuff(object):
     def apple(self):
         print("I AM CLASSY APPLES!")
 
+
 # class style
 thing = MyStuff()
 thing.apple()
 print(thing.tangerine)
-
-
 
 
 class Song(object):
@@ -33,9 +32,10 @@ class Song(object):
         for line in self.lyrics:
             print(line)
 
+
 happy_bday = Song(["Happy birthday to you",
-                    "I don't want to get sued",
-                    "So I'll stop right there"])
+                   "I don't want to get sued",
+                   "So I'll stop right there"])
 
 bulls_on_parade = Song(["They rally around tha family",
                         "With pockets full of shells"])

@@ -1,3 +1,4 @@
+from sys import argv
 print("How old are you?", end=' ')
 age = input()
 print("How tall are you?", end=' ')
@@ -7,7 +8,6 @@ weight = input()
 
 print(f"So, you're {age} old, {height} tall and {weight} heavy.")
 
-from sys import argv
 script, filename = argv
 
 txt = open(filename)
@@ -24,7 +24,7 @@ print(txt_again.read())
 
 
 print('Let\'s practice everything.')
-print("""You\'d need to know \'bout escapes 
+print("""You\'d need to know \'bout escapes
       with \\ that do \n newlines and \t tabs.""")
 
 poem = """
@@ -43,6 +43,7 @@ print("--------------")
 
 five = 10 - 2 + 3 - 6
 print(f"This should be five: {five}")
+
 
 def secret_formula(started):
     jelly_beans = started * 500
@@ -65,7 +66,6 @@ print("We can also do that this way:")
 formula = secret_formula(start_point)
 # this is an easy way to apply a list to a format string
 print("We'd have {} beans, {} jars, and {} crates.".format(*formula))
-
 
 
 people = 20

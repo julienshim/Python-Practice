@@ -7,21 +7,21 @@ binary = "binary"
 do_not = "don't"
 y = f"Those who know {binary} and those who {do_not}."
 
-#print x and y strings
+# print x and y strings
 print(x)
 print(y)
 
-#repeat print x and y with f-strings
+# repeat print x and y with f-strings
 print(f"I said: {x}")
 print(f"I also said: '{y}'")
 
-#using format method for a value stored in a variable
+# using format method for a value stored in a variable
 hilarious = False
 joke_evaluation = "Isn't that joke so funny?! {}"
 
 print(joke_evaluation.format(hilarious))
 
-#2 variables and combined with printed
+# 2 variables and combined with printed
 w = "This is the left side of... "
 e = "a string with a ride side."
 

@@ -1,6 +1,6 @@
 cars = 100
 space_in_a_car = 4
-#4.0 is a floating point number
+# 4.0 is a floating point number
 drivers = 30
 passengers = 90
 cars_not_driven = cars - drivers

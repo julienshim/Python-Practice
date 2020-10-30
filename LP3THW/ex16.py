@@ -16,11 +16,11 @@ print("Opening the file...")
 # open the txt file in 'w' or write mode.
 target = open(filename, 'w')
 
-#cut the files contents
+# cut the files contents
 print("truncating the file. Goodbye!")
 target.truncate()
 
-#asking user for three lines with input() prompts following
+# asking user for three lines with input() prompts following
 print("Now I'm going ot ask you for three lines.")
 
 line1 = input("line 1: ")
@@ -29,13 +29,13 @@ line3 = input("line 3: ")
 
 print("I'm going to write these to the file.")
 
-target.write(line1) #writing line 1
-target.write("\n") #new line, etc. etc.
+target.write(line1)  # writing line 1
+target.write("\n")  # new line, etc. etc.
 target.write(line2)
 target.write("\n")
 target.write(line3)
 target.write("\n")
 
-#closing file.
+# closing file.
 print("And finally, we close it.")
 target.close()

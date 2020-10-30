@@ -9,7 +9,7 @@ elif cars < people:
 else:
     print("We can't decide.")
 
-if trucks> cars:
+if trucks > cars:
     print("Taht's too many trucks.")
 elif trucks < cars:
     print("Maybe we could take the trucks.")
@@ -18,5 +18,5 @@ else:
 
 if people > trucks:
     print("Alright, let's just take the trucks.")
-else: 
+else:
     print("fine, let's stay home then.")
