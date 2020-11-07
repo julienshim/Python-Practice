@@ -3,3 +3,4 @@
 /TMP3B/Modules/__pycache__
 /TCPB/Course_Materials_Part1
 .ipynb_checkpoints
+*.csv
