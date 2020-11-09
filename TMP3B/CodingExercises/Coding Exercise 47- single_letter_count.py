@@ -9,6 +9,14 @@ single_letter_count("HelLo World", "l") # 3
 
 
 def single_letter_count(string, letter):
+    """
+    >>> single_letter_count("Hello World", "h")
+    1
+    >>> single_letter_count("Hello World", "z")
+    0
+    >>> single_letter_count("HelLo World", "l")
+    3
+    """
     return string.lower().count(letter)
 
 # alt

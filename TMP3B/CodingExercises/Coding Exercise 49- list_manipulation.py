@@ -7,6 +7,16 @@ list_manipulation([1,2,3], "add", "end", 30) #  [1,2,3,30]
 
 
 def list_manipulation(list, command, location, value=0):
+    """
+    >>> list_manipulation([1,2,3], "remove", "end")
+    3
+    >>> list_manipulation([1,2,3], "remove", "beginning")
+    1
+    >>> list_manipulation([1,2,3], "add", "beginning", 20)
+    [20, 1, 2, 3]
+    >>> list_manipulation([1,2,3], "add", "end", 30)
+    [1, 2, 3, 30]
+    """
     if command == "remove":
         return list.pop() if location == "end" else list.pop(0)
     if command == "add":

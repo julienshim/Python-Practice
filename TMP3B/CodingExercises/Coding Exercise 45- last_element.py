@@ -5,6 +5,12 @@ last_element([]) # None
 
 
 def last_element(arr):
+    """
+    >>> last_element([1,2,3])
+    3
+    >>> last_element([]) is None
+    True
+    """
     return arr.pop() if len(arr) > 0 else None
 
 # alt
