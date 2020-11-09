@@ -3,6 +3,12 @@
 
 
 def intersection(la, lb):
+    """
+    >>> intersection([1,2,3],[2,3,4])
+    [2, 3]
+    >>> intersection(['a','b','z'], ['x','y','z'])
+    ['z']
+    """
     return list(set(la) & set(lb))
 
 # alt - manual looping
