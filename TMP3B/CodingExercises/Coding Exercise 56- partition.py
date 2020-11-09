@@ -6,7 +6,15 @@ partition([1,2,3,4], isEven) # [[2,4],[1,3]]
 '''
 
 
+def isEven(num):
+    return num % 2 == 0
+
+
 def partition(collection, isEven):
+    """
+    >>> partition([1,2,3,4], isEven)
+    [[2, 4], [1, 3]]
+    """
     even = [num for num in collection if isEven(num)]
     odd = [num for num in collection if not isEven(num)]
     return [even, odd] if isEven else [odd, even]
