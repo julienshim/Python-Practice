@@ -1,6 +1,7 @@
 import unittest
 
 from other_assertion_types import is_funny, laugh
+from activities import eat
 
 
 class OtherAssertionTypesTest(unittest.TestCase):
@@ -15,6 +16,11 @@ class OtherAssertionTypesTest(unittest.TestCase):
 
     def test_laugh(self):
         self.assertIn(laugh(), ('lol', 'haha', 'tehehe'))
+
+    def test_eat_healthy_boolean(self):
+        """"is_healthy must be a bool"""
+        with self.assertRaises(ValueError):
+            eat("pizza", is_healthy="who cares?")
 
 
 if __name__ == "__main__":
