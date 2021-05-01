@@ -9,3 +9,16 @@ def two_list_dictionary(arr1, arr2):
     for index, val in enumerate(arr1):
         tmp_dict[val] = arr2[index] if index < len(arr2) else None
     return tmp_dict
+
+# intstructor solution
+
+# def two_list_dictionary(keys, values):
+#     collection = {}
+    
+#     for idx, val in enumerate(keys):
+#         if idx < len(values):
+#             collection[keys[idx]] = values[idx]
+#         else:
+#             collection[keys[idx]] = None
+    
+#     return collection
