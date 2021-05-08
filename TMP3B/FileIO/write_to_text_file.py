@@ -17,7 +17,7 @@ with open('haiku.txt', 'a') as file:
     file.write('Appending another new line \n')
     file.write('Appending one more new line')
 
-with open('haiku.txt', 'r+') as file:
+with open('haiku.txt', 'r+') as file: # requires existing file
     file.write(':)')
     file.seek(10)
     file.write(':(')
