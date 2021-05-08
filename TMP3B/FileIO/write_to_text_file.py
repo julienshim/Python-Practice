@@ -10,3 +10,14 @@ with open('haiku.txt', 'w') as file: # overwrites existing
 
 with open('lol.txt', 'w') as file:
     file.write('haha' * 10000)
+
+with open('haiku.txt', 'a') as file:
+    file.write('\n') # since prev has no \n
+    file.write('Appending a new line \n')
+    file.write('Appending another new line \n')
+    file.write('Appending one more new line')
+
+with open('haiku.txt', 'r+') as file:
+    file.write(':)')
+    file.seek(10)
+    file.write(':(')
