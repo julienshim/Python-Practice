@@ -6,8 +6,8 @@ class Cat:
         self.breed = breed
 
 c = Cat("Charles", "Tabby")
+j = json.dumps(c.__dict__)
 
 # j = json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
-j = json.dumps(c.__dict__)
 
 print(j)
