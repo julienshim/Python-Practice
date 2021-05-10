@@ -38,5 +38,14 @@ soup = BeautifulSoup(html, "html.parser")
 # special = soup.find_all(class_="special")
 # print(special)
 
-data = soup.find_all(attrs={"data-example": 'yes'})
-print(data)
+# data = soup.find_all(attrs={"data-example": 'yes'})
+# print(data)
+
+# data = soup.select('#first')[0]
+# print(data)
+
+# data = soup.select('.special')
+# print(data)
+
+# data = soup.select('[data-example]')
+# print(data)
