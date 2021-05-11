@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 
 html = '''
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8" class="special">
     <title>First HTML Page</title>
