@@ -32,3 +32,35 @@ for div in quote_divs:
 # 5C. The next two hints are up to you! Some ideas: the first letter of the author's first name, the first letter of the author's last name, the number of letters in one of the names, etc.
 
 # 6. When the game is over, ask the player if they want to play again. If yes, restart the game with a new quote. If no, the program is complete.
+
+
+
+
+
+
+
+
+# UI
+
+# Here's a quote:
+
+# "{quote}"
+
+# Who said this? Guesses remaining: {n}. <User Input>
+
+# Here's a hint: {Hint}
+
+# Who said this? Guesses remaining: {n}.
+# You guessed correctly! Congratulations!
+# Would you like to play again (y/n)?
+
+
+# Great! Here we go again...
+
+# Here's a quote:
+
+#"{quote}"
+
+# Who said this? Guesses remaining: {n}.
+
+# Ok! See you next time!
