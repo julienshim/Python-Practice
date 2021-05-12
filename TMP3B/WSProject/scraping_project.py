@@ -1,6 +1,19 @@
 # You can use `bs4` and `requests` to get the data. 
+import requests
+from bs4 import BeautifulSoup
 
 # 1. Grab data on every quote from the website http://quotes.toscrape.com
+
+current_page = 1
+response = requests.get(f"https://quotes.toscrape.com/page/{current_page}/")
+soup = BeautifulSoup(response.text, "html.parser")
+quote_divs = soup.find_all(class_="quote")
+for div in quote_divs:
+    quote = div.find(class_="text").get_text()
+    author = div.find(class_="author").get_text()
+    link = div.find("a")["href"]
+    print(link)
+# print(quote_divs)
 
 # 2. For each quote you should grab the text of the quote, the name of the person who said the quote, and the href of the link to the person's bio. Store all of this information in a list.
 
