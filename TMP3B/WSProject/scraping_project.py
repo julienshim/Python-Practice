@@ -1,18 +1,30 @@
 # You can use `bs4` and `requests` to get the data. 
 import requests
 from bs4 import BeautifulSoup
+from time import sleep
 
 # 1. Grab data on every quote from the website http://quotes.toscrape.com
 
 current_page = 1
-response = requests.get(f"https://quotes.toscrape.com/page/{current_page}/")
-soup = BeautifulSoup(response.text, "html.parser")
-quote_divs = soup.find_all(class_="quote")
-for div in quote_divs:
-    quote = div.find(class_="text").get_text()
-    author = div.find(class_="author").get_text()
-    link = div.find("a")["href"]
-    print(link)
+
+def get_soup(page_number)
+    response = requests.get(f"https://quotes.toscrape.com/page/{page_number}/")
+    return BeautifulSoup(response.text, "html.parser")
+
+def next_page_exists(page_number):
+    soup = get_soup(page_number)
+    return bool(soup.find(class_="next"))
+
+def scrape_quotes_page(page_number):
+    soup = get_soup(page_number)
+    quote_divs = soup.find_all(class_="quote")
+    for div in quote_divs:
+        quote = div.find(class_="text").get_text()
+        author = div.find(class_="author").get_text()
+        link = div.find("a")["href"]
+        print(link)
+
+print(next_page_exists(10))
 # print(quote_divs)
 
 # 2. For each quote you should grab the text of the quote, the name of the person who said the quote, and the href of the link to the person's bio. Store all of this information in a list.
@@ -28,6 +40,10 @@ for div in quote_divs:
 # 5A. After every incorrect guess, the player receives a hint about the author. 
 
 # 5B. For the first hint, make another request to the author's bio page, and tell the player the author's birth date and location.
+
+def pull_author_info(bio_href):
+    pass
+
 
 # 5C. The next two hints are up to you! Some ideas: the first letter of the author's first name, the first letter of the author's last name, the number of letters in one of the names, etc.
 
