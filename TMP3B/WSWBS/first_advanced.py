@@ -17,7 +17,7 @@ def scrape_articles(page_number):
     response = requests.get(f"https://www.rithmschool.com/blog?page={current_page}")
     soup = BeautifulSoup(response.text, "html.parser")
     articles = soup.find_all('article')
-    with open('blog_datafull.csv', 'a') as csv_file:
+    with open('blog_data_full.csv', 'a') as csv_file:
         for article in articles:
             a_tag = article.find("a")
             title = a_tag.get_text()
