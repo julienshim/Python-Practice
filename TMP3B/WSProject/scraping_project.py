@@ -2,12 +2,14 @@
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
+from random import randint
+from csv import writer
 
 # 1. Grab data on every quote from the website http://quotes.toscrape.com
 
 current_page = 1
 
-def get_soup(page_number)
+def get_soup(page_number):
     response = requests.get(f"https://quotes.toscrape.com/page/{page_number}/")
     return BeautifulSoup(response.text, "html.parser")
 
@@ -18,13 +20,31 @@ def next_page_exists(page_number):
 def scrape_quotes_page(page_number):
     soup = get_soup(page_number)
     quote_divs = soup.find_all(class_="quote")
-    for div in quote_divs:
-        quote = div.find(class_="text").get_text()
-        author = div.find(class_="author").get_text()
-        link = div.find("a")["href"]
-        print(link)
+    with open('blog_data_full', 'a') as csv_file:
+        for div in quote_divs:
+            quote = div.find(class_="text").get_text()
+            author = div.find(class_="author").get_text()
+            link = div.find("a")["href"]
+            csv_writer.writerow([quote, author, link])
 
-print(next_page_exists(10))
+with open('blog_data_full_project.csv', 'w') as csv_file:
+    csv_writer = writer(csv_file)
+    headers = ["quote", "author", "link"]
+    csv_writer.writerow(headers)
+    print('Page 1')
+    scrape_quotes_page(current_page)
+
+    is_scraping = True
+
+    while is_scraping:
+        sleep(randint(3,8))
+        if next_page_exists(current_page):
+            current_page += 1
+            print(f"Page {current_page}")
+            scrape_quotes_page(current_page)
+        else:
+            is_scraping = False
+
 # print(quote_divs)
 
 # 2. For each quote you should grab the text of the quote, the name of the person who said the quote, and the href of the link to the person's bio. Store all of this information in a list.
@@ -60,8 +80,20 @@ def pull_author_info(bio_href):
 
 # Here's a quote:
 
-# "{quote}"
+# print("Here's a quote:")
 
+# # "{quote}"
+
+# guess = input(f"Who said this? (Guesses reaminig: {}) ")
+
+# while guess != answer:
+#     if guess:
+#         # if
+
+#         # else
+#         guess = input(f"")
+#     else:
+    # enter a guess
 # Who said this? Guesses remaining: {n}. <User Input>
 
 # Here's a hint: {Hint}
