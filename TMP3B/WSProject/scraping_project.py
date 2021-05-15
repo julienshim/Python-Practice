@@ -1,59 +1,35 @@
 # You can use `bs4` and `requests` to get the data. 
-import requests
-from bs4 import BeautifulSoup
-from time import sleep
-from random import randint
-from csv import writer
 
 # 1. Grab data on every quote from the website http://quotes.toscrape.com
 
 
-def get_soup(page_number):
-    url = f"https://quotes.toscrape.com/page/{page_number}/"
-    response = requests.get(url)
-    return BeautifulSoup(response.text, "html.parser")
+from resources.write_headers import write_headers
+from resources.scrape_quotes import scrape_quotes
+from resources.load_resources import load_resources
+from game.banner import banner
 
-def next_page_exists(page_number):
-    soup = get_soup(page_number)
-    return bool(soup.find(class_="next"))
+from csv import reader
 
-def scrape_quotes_page(page_number):
-    soup = get_soup(page_number)
-    quote_divs = soup.find_all(class_="quote")
-    with open('blog_data_full_project.csv', 'a') as csv_file:
-        csv_writer = writer(csv_file)
-        for div in quote_divs:
-            quote = div.find(class_="text").get_text()
-            author = div.find(class_="author").get_text()
-            link = div.find("a")["href"]
-            csv_writer.writerow([quote, author, link])
 
-def scrape_quotes():
-    current_page = 1
-    with open('blog_data_full_project.csv', 'w') as csv_file:
-        csv_writer = writer(csv_file)
-        headers = ["quote", "author", "link"]
-        csv_writer.writerow(headers)
-        print('Page 1')
-        scrape_quotes_page(current_page)
 
-        is_scraping = True
+game_data = []
+game_is_running = True
 
-        while is_scraping:
-            sleep(randint(3,8))
-            if next_page_exists(current_page):
-                current_page += 1
-                print(f"Page {current_page}")
-                scrape_quotes_page(current_page)
-            else:
-                is_scraping = False
-
-def loading():
-    print("Loading Game...")
+def scraping_resources():
+    write_headers()
     scrape_quotes()
-    print("Game Loaded!")
+    
+def load_game_data():
+    game_data = load_resources()
 
-loading()
+print("Scraping resources...")
+scraping_resources()
+print("Loading game data...")
+load_game_data()
+print(banner)
+
+# while game_is_running:
+
 
 # print(quote_divs)
 
