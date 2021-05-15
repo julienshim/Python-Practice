@@ -7,10 +7,10 @@ from csv import writer
 
 # 1. Grab data on every quote from the website http://quotes.toscrape.com
 
-current_page = 1
 
 def get_soup(page_number):
-    response = requests.get(f"https://quotes.toscrape.com/page/{page_number}/")
+    url = f"https://quotes.toscrape.com/page/{page_number}/"
+    response = requests.get(url)
     return BeautifulSoup(response.text, "html.parser")
 
 def next_page_exists(page_number):
@@ -20,30 +20,40 @@ def next_page_exists(page_number):
 def scrape_quotes_page(page_number):
     soup = get_soup(page_number)
     quote_divs = soup.find_all(class_="quote")
-    with open('blog_data_full', 'a') as csv_file:
+    with open('blog_data_full_project.csv', 'a') as csv_file:
+        csv_writer = writer(csv_file)
         for div in quote_divs:
             quote = div.find(class_="text").get_text()
             author = div.find(class_="author").get_text()
             link = div.find("a")["href"]
             csv_writer.writerow([quote, author, link])
 
-with open('blog_data_full_project.csv', 'w') as csv_file:
-    csv_writer = writer(csv_file)
-    headers = ["quote", "author", "link"]
-    csv_writer.writerow(headers)
-    print('Page 1')
-    scrape_quotes_page(current_page)
+def scrape_quotes():
+    current_page = 1
+    with open('blog_data_full_project.csv', 'w') as csv_file:
+        csv_writer = writer(csv_file)
+        headers = ["quote", "author", "link"]
+        csv_writer.writerow(headers)
+        print('Page 1')
+        scrape_quotes_page(current_page)
 
-    is_scraping = True
+        is_scraping = True
 
-    while is_scraping:
-        sleep(randint(3,8))
-        if next_page_exists(current_page):
-            current_page += 1
-            print(f"Page {current_page}")
-            scrape_quotes_page(current_page)
-        else:
-            is_scraping = False
+        while is_scraping:
+            sleep(randint(3,8))
+            if next_page_exists(current_page):
+                current_page += 1
+                print(f"Page {current_page}")
+                scrape_quotes_page(current_page)
+            else:
+                is_scraping = False
+
+def loading():
+    print("Loading Game...")
+    scrape_quotes()
+    print("Game Loaded!")
+
+loading()
 
 # print(quote_divs)
 
