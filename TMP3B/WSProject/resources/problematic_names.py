@@ -1,3 +1,5 @@
+from re import sub
+from resources.determine_last_name import determine_last_name
 
 problematic_names_pairs = {
     "Albert Einstein": [
@@ -70,11 +72,10 @@ def problematic_names_post(string, key):
     if key in problematic_names_pairs.keys():
         for pair in problematic_names_pairs[key]:
             [before, after] = pair
-            name_arr = sub('-', ' ', key).split(' ')
-            last_name = determine_last_name(name_arr)
+            last_name = determine_last_name(key)
             if after in string:
                 string = sub(after, before, string)
-            # family sharing the same surname issue
+            # name sharing issue
             family_overwrite_error = sub(last_name, 'this person', after)
             if family_overwrite_error in string:
                 string = sub(family_overwrite_error, before, string)
