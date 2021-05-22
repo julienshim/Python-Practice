@@ -15,5 +15,4 @@ def process_raw_description(description_string, name):
     matches = list(filter(lambda n: unwanted_target_removeal_local(n, name), matches))
     matches = list(map(lambda n: anonymize_author(n, name, last_name), matches))
     matches = list(map(lambda n: problematic_names_post(n, name), matches))
-    print('\n'.join(matches))
     return matches
