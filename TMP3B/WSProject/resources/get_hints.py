@@ -10,4 +10,4 @@ def get_hints(link):
     born_date = soup.find(class_="author-born-date").get_text().strip()
     born_location = soup.find(class_="author-born-location").get_text().strip()
     description_arr = process_raw_description(soup.find(class_="author-description").get_text().strip(), name)
-    return Author(born_date, born_location, description_arr)
+    return Author(name, born_date, born_location, description_arr)
