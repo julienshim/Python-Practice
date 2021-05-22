@@ -6,27 +6,57 @@
 from resources.write_headers import write_headers
 from resources.scrape_quotes import scrape_quotes
 from resources.load_resources import load_resources
+from resources.get_hints import get_hints
 from game.banner import banner
+from time import sleep
 
 from csv import reader
+from random import randint, shuffle
+
+with open('./resources/csv/blog_data_full_project.csv') as csv_file:
+    csv_reader = reader(csv_file)
+    data = [row for row in csv_file]
+    if len(data) == 0:
+        print('Downloading Game Data...')
+        write_headers()
+        scrape_quotes()
+
+game_data = load_resources()
+position = 0
+quote = game_data[position] # .text .author .link
+hints = get_hints(quote.link) # .born_date .born_location .description_arr
+guesses_left = 4
+
+print(quote.text)
+print(quote.author)
+print(quote.link)
+
+print(hints.born_date)
+print(hints.born_location)
+print(hints.description_arr)
 
 
 
-game_data = []
-game_is_running = True
+# for i in range(0, len(game_data)):
+#     quote = game_data[i]
+#     print(f'*******{quote.link}*******')
+#     hints = get_hints(quote.link)
+#     sleep(randint(3,8))
 
-def scraping_resources():
-    write_headers()
-    scrape_quotes()
-    
-def load_game_data():
-    game_data = load_resources()
+# print(hints.get_random_fact())
 
-print("Scraping resources...")
-scraping_resources()
-print("Loading game data...")
-load_game_data()
-print(banner)
+# print("Here's a quote:\n")
+
+# print(f"{quote.text}\n")
+
+# guess = input(f"Who said this? (Guesses remaining: {guesses_left}) ")
+
+# if guess.lower() !== quote.author.lower():
+#     print("HE")
+#     guess = input(f"Who said this? (Guesses remaining: {guesses_left}) ")
+
+
+
 
 # while game_is_running:
 
@@ -43,15 +73,12 @@ print(banner)
 
 # 4C. If the player correctly identifies the author, the player wins!
 
-# 5A. After every incorrect guess, the player receives a hint about the author. 
 
-# 5B. For the first hint, make another request to the author's bio page, and tell the player the author's birth date and location.
 
 def pull_author_info(bio_href):
     pass
 
 
-# 5C. The next two hints are up to you! Some ideas: the first letter of the author's first name, the first letter of the author's last name, the number of letters in one of the names, etc.
 
 # 6. When the game is over, ask the player if they want to play again. If yes, restart the game with a new quote. If no, the program is complete.
 
