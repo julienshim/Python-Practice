@@ -10,7 +10,8 @@ class Author:
 
     def get_last_name_hint(self):
         last_name = determine_last_name(self.name)
-        return last_name[0] + len(last_name[1:]) * "*"
+        hidden_last_name = last_name[0] + len(last_name[1:]) * '*'
+        return f"This person's last name is {hidden_last_name}."
     
     def get_born_date_hint(self):
         return f"This person was born on {self.born_date}."
