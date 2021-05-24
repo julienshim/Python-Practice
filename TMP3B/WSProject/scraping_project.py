@@ -12,6 +12,8 @@ from time import sleep
 
 from csv import reader
 from random import randint, shuffle
+from re import sub
+from unidecode import unidecode
 
 with open('./resources/csv/blog_data_full_project.csv') as csv_file:
     csv_reader = reader(csv_file)
@@ -22,28 +24,23 @@ with open('./resources/csv/blog_data_full_project.csv') as csv_file:
         scrape_quotes()
 
 game_data = load_resources()
+
+print(banner)
+
 position = 0
-quote = game_data[position] # .text .author .link
-hints = get_hints(quote.link) # .born_date .born_location .description_arr
+quote = game_data[position]
+
+# .text .author .link
+
+hints = shuffle(get_hints(quote.link).get_all_hints()) 
+
+# .name .born_date .born_location .description_arr
+# get_last_name_hint
+# get_born_date_hint
+# get_born_location_hint
+# get_random_bio_fact
+
 guesses_left = 4
-
-print(quote.text)
-print(quote.author)
-print(quote.link)
-
-print(hints.born_date)
-print(hints.born_location)
-print(hints.description_arr)
-
-
-
-# for i in range(0, len(game_data)):
-#     quote = game_data[i]
-#     print(f'*******{quote.link}*******')
-#     hints = get_hints(quote.link)
-#     sleep(randint(3,8))
-
-# print(hints.get_random_fact())
 
 # print("Here's a quote:\n")
 
@@ -51,12 +48,48 @@ print(hints.description_arr)
 
 # guess = input(f"Who said this? (Guesses remaining: {guesses_left}) ")
 
+# while guess != quote.author
+
+# print(quote.text)
+# print(quote.author)
+# print(quote.link)
+
+# print(hints.born_date)
+# print(hints.born_location)
+# print(hints.description_arr)
+    
+auths = []
+
+def possible_answers_list(name):
+    name_wo_dash = sub('-', ' ', name)
+    name_wo_periods_compressed = sub('\.', '', name)
+    name_wo_periods_expand = sub('  ', ' ', sub('\.', ' ', name))
+    name_w_periods_expand = sub('  ', ' ', sub('\.', '. ', name))
+    name_unaccented = unidecode(name)
+    name_list = list(map(lambda x: x.strip(), [name, name_wo_dash, name_wo_periods_compressed, name_wo_periods_expand, name_w_periods_expand, name_unaccented]))
+    if name == "Thomas A. Edison":
+        name_list.append("Thomas Edison")
+    return name_list
+
+for i in range(0, len(game_data)):
+    quote = game_data[i]
+    hints = get_hints(quote.link)
+    author = quote.author
+    author_alt = hints.name
+    if author not in auths:
+        answer_arr = list(set(possible_answers_list(author) + possible_answers_list(author_alt)))
+        print(answer_arr)
+        auths.append(author)
+        # print('\t'.join([author, author_wo_dash, author_wo_periods_compressed, author_wo_periods_expand, author_unaccented]))
+        sleep(randint(3,8))
+
+# print(hints.get_random_fact())
+
+
+
 # if guess.lower() !== quote.author.lower():
 #     print("HE")
 #     guess = input(f"Who said this? (Guesses remaining: {guesses_left}) ")
-
-
-
 
 # while game_is_running:
 
@@ -72,8 +105,6 @@ print(hints.description_arr)
 # 4B.  If the player gets to zero guesses without identifying the author, the player loses and the game ends.
 
 # 4C. If the player correctly identifies the author, the player wins!
-
-
 
 def pull_author_info(bio_href):
     pass
