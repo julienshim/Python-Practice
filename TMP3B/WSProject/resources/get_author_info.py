@@ -4,8 +4,8 @@ from resources.sanitize_name import sanitize_name
 from resources.determine_last_name import determine_last_name
 from resources.process_raw_description import process_raw_description
 
-def get_hints(link):
-    soup = get_author_soup(link)
+def get_author_info(quote_author_bio_link):
+    soup = get_author_soup(quote_author_bio_link)
     name = soup.find(class_="author-title").get_text().split("\n")[0].strip()
     born_date = soup.find(class_="author-born-date").get_text().strip()
     born_location = soup.find(class_="author-born-location").get_text().strip()
