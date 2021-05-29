@@ -23,7 +23,7 @@ class Author:
         len_desc_arr = len(self.description_arr)-1
         return self.description_arr[randint(0, len_desc_arr)]
 
-    def get_all_hints(self):
+    def get_all_author_hints(self):
         return [self.get_last_name_hint(), 
                 self.get_born_date_hint(),
                 self.get_born_location_hint(),
