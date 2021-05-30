@@ -1,3 +1,5 @@
+from resources.write_headers import write_headers
+from resources.scrape_quotes import scrape_quotes
 
 from csv import reader
 
