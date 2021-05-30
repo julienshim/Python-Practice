@@ -1,12 +1,9 @@
-from resources.write_headers import write_headers
-from resources.scrape_quotes import scrape_quotes
 from resources.download_resources import download_resources
 from game.banner import banner
 from game.class_quote_manager import QuoteManager
 from time import sleep
 
 from random import randint, shuffle
-
 
 download_resources()
 
