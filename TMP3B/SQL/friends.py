@@ -19,8 +19,17 @@ data = ("Steve", "Irwin", 9)
 query = "INSERT INTO friends VALUES (?,?,?)"
 c.execute(query, data)
 
+# BULK ADD
 # for person in people: # instead of data, pulling
 # 	c.execute("INSERT INTO friends VALUES (?,?,?)", person)
+
+# QUERY
+# c.executie('QUERY')
+# for result in c:
+#     print(c)
+
+# print(c.fetchone())
+# print(c.fetchall())
 
 # commit changes
 conn.commit()
