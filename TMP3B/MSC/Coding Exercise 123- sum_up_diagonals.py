@@ -41,3 +41,13 @@ def sum_up_diagonals(l):
     forward = sum(l[i][i] for i in range(f))
     back = sum(l[i][b-i] for i in range(f))
     return forward + back
+
+# instructor solve
+
+# def sum_up_diagonals(arr):
+#     total = 0
+    
+#     for i,val in enumerate(arr):
+#         total += arr[i][i]
+#         total += arr[i][-1-i]
+#     return total
