@@ -4,4 +4,10 @@ from time import sleep
 from datetime import datetime, timedelta
 from re import findall
 from mutagen.wave import WAVE
+from subprocess import call
 
+# settings
+delay_between_audio = 30
+delay_at_beginning = 5
+volume_target = 75
+playlist_target = ''
