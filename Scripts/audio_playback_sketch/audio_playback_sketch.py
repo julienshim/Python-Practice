@@ -11,3 +11,9 @@ delay_between_audio = 30
 delay_at_beginning = 5
 volume_target = 75
 playlist_target = ''
+
+def get_seconds_duration(track):
+    audio = WAVE(f'./AUDIO/{track}')
+    audio_info = audio.info
+    length = int(audio_info.length)
+    return length
