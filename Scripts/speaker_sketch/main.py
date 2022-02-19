@@ -11,7 +11,17 @@ delay_between_audio = 30
 delay_at_beginning = 5
 volume_target = 75
 playlists = [playlist for playlist in listdir(f'{getcwd()}/PLAYLIST')]
-print(playlists)
+
+# display options
+
+for index, playlist in enumerate(playlists):
+    option = f'{index + 1}. {playlist}'
+    print(option)
+
+selected_index = int(input(f'Select a playlist [1-{len(playlists)}]: '))
+selected_playlist = playlists[selected_index]
+print(selected_playlist)
+
 
 def get_seconds_duration(track):
     audio = WAVE(f'./AUDIO/{track}')
