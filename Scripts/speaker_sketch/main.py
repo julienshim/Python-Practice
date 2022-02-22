@@ -13,14 +13,17 @@ volume_target = 75
 playlists = [playlist for playlist in listdir(f'{getcwd()}/PLAYLIST')]
 
 # display options
-
 for index, playlist in enumerate(playlists):
     option = f'{index + 1}. {playlist}'
     print(option)
 
-selected_index = int(input(f'Select a playlist [1-{len(playlists)}]: '))
+selected_index = int(input(f'Select a playlist [1-{len(playlists)}]: ')) - 1
 selected_playlist = playlists[selected_index]
 print(selected_playlist)
+
+# audio_files_path
+audio_files_path = f'{getcwd()}/AUDIO/{selected_playlist.replace(".txt", "")}'
+audio_files = listdir(audio_files_path)
 
 
 def get_seconds_duration(track):
