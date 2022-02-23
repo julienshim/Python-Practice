@@ -25,6 +25,14 @@ print(selected_playlist)
 audio_files_path = f'{getcwd()}/AUDIO/{selected_playlist.replace(".txt", "")}'
 audio_files = listdir(audio_files_path)
 
+# open and verify playlist
+current_playlist = []
+playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
+with open(playlist_file_path) as target_playlist:
+    for track in target_playlist:
+        track = track.strip()
+        if track in audio_files:
+            current_playlist.append(track)
 
 def get_seconds_duration(track):
     audio = WAVE(f'./AUDIO/{track}')
