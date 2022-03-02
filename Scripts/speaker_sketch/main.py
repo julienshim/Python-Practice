@@ -29,13 +29,17 @@ audio_files = listdir(audio_files_path)
 current_playlist = []
 warnings = []
 playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
+
 with open(playlist_file_path) as target_playlist:
     for track in target_playlist:
-        track = track.strip()
+        [order, track] = track.strip().split('\t')
         if track in audio_files:
             current_playlist.append(track)
         else:
             warnings.append(f'WARNING: MISSING{track}')
+
+if len(audio_files) == len(current_playlist) and len(warnings) == 0:
+    print('OK')
 
 def get_seconds_duration(track):
     audio = WAVE(f'./AUDIO/{track}')
