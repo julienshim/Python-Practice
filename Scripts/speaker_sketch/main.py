@@ -39,7 +39,20 @@ with open(playlist_file_path) as target_playlist:
             warnings.append(f'WARNING: MISSING{track}')
 
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
-    print('OK')
+    # total_duration_seconds
+
+    # total_duration hms
+
+    # current time
+
+    # estimated time
+
+    # compensate for playback delay
+
+    # loop through playlist
+
+        # account for device setups with volume drift
+
 
 def get_seconds_duration(track):
     audio = WAVE(f'./AUDIO/{track}')
