@@ -52,7 +52,10 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # loop through playlist
 
         # account for device setups with volume drift
-
+else:
+    print(f'Cannot play audio. {len(warnings)} warnings found: ')
+    for index, warning in enumerate(warnings):
+        print(f'{index+1}. {warning}')
 
 def get_seconds_duration(track):
     audio = WAVE(f'./AUDIO/{track}')
