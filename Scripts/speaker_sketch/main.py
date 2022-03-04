@@ -52,6 +52,7 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # loop through playlist
 
         # account for device setups with volume drift
+        call([f"osascript -e 'set volume output volume {target_volume}'"], shell=True)
 else:
     print(f'Cannot play audio. {len(warnings)} warnings found: ')
     for index, warning in enumerate(warnings):
