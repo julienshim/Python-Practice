@@ -6,6 +6,12 @@ from re import findall
 from mutagen.wave import WAVE
 from subprocess import call
 
+
+# sleep(15)
+# test_tone = f"./TEST/1kHz_44100Hz_16bit_05sec.wav"
+# playsound(test_tone)
+# sleep(30)
+
 # settings
 delay_between_audio = 30
 delay_at_beginning = 5
@@ -19,7 +25,6 @@ for index, playlist in enumerate(playlists):
 
 selected_index = int(input(f'Select a playlist [1-{len(playlists)}]: ')) - 1
 selected_playlist = playlists[selected_index]
-print(selected_playlist)
 
 # audio_files_path
 audio_files_path = f'{getcwd()}/AUDIO/{selected_playlist.replace(".txt", "")}'
@@ -30,17 +35,25 @@ current_playlist = []
 warnings = []
 playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
 
+def get_seconds_duration(track):
+    audio = WAVE(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{track}')
+    audio_info = audio.info
+    length = int(audio_info.length)
+    return length
+
 with open(playlist_file_path) as target_playlist:
     for track in target_playlist:
         [order, track] = track.strip().split('\t')
         if track in audio_files:
-            current_playlist.append(track)
+            current_playlist.append((order, track))
         else:
             warnings.append(f'WARNING: MISSING{track}')
 
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # total_duration_seconds
-
+    print(selected_playlist)
+    [play_order, track] = current_playlist[0]
+    print(get_seconds_duration(track))
     # total_duration hms
 
     # current time
@@ -51,15 +64,10 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
 
     # loop through playlist
 
-        # account for device setups with volume drift
-        call([f"osascript -e 'set volume output volume {target_volume}'"], shell=True)
+    # account for device setups with volume drift
+    # call([f"osascript -e 'set volume output volume {volume_target}'"], shell=True)
 else:
     print(f'Cannot play audio. {len(warnings)} warnings found: ')
     for index, warning in enumerate(warnings):
         print(f'{index+1}. {warning}')
 
-def get_seconds_duration(track):
-    audio = WAVE(f'./AUDIO/{track}')
-    audio_info = audio.info
-    length = int(audio_info.length)
-    return length
