@@ -12,10 +12,13 @@ from subprocess import call
 # playsound(test_tone)
 # sleep(30)
 
+def filter_hidden(file_name):
+    return not file_name.startswith(".")
+
 # settings
 delay_between_audio = 30
 delay_at_beginning = 5
-volume_target = 75
+# volume_target = 75
 playlists = [playlist for playlist in listdir(f'{getcwd()}/PLAYLIST')]
 
 # display options
@@ -28,7 +31,7 @@ selected_playlist = playlists[selected_index]
 
 # audio_files_path
 audio_files_path = f'{getcwd()}/AUDIO/{selected_playlist.replace(".txt", "")}'
-audio_files = listdir(audio_files_path)
+audio_files = list(filter(filter_hidden, listdir(audio_files_path)))
 
 # open and verify playlist
 current_playlist = []
@@ -44,10 +47,14 @@ def get_seconds_duration(track):
 with open(playlist_file_path) as target_playlist:
     for track in target_playlist:
         [order, track] = track.strip().split('\t')
+        print(track)
         if track in audio_files:
             current_playlist.append((order, track))
         else:
             warnings.append(f'WARNING: MISSING{track}')
+
+print('audio files', audio_files)
+print(len(current_playlist))
 
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # total_duration_seconds
