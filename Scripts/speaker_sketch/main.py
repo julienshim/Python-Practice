@@ -12,8 +12,16 @@ from subprocess import call
 # playsound(test_tone)
 # sleep(30)
 
+# functions
+
 def filter_hidden(file_name):
     return not file_name.startswith(".")
+
+def get_seconds_duration(track):
+    audio = WAVE(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{track}')
+    audio_info = audio.info
+    length = int(audio_info.length)
+    return length
 
 # settings
 delay_between_audio = 30
@@ -38,12 +46,6 @@ current_playlist = []
 warnings = []
 playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
 
-def get_seconds_duration(track):
-    audio = WAVE(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{track}')
-    audio_info = audio.info
-    length = int(audio_info.length)
-    return length
-
 with open(playlist_file_path) as target_playlist:
     for track in target_playlist:
         [order, track] = track.strip().split('\t')
@@ -53,14 +55,12 @@ with open(playlist_file_path) as target_playlist:
         else:
             warnings.append(f'WARNING: MISSING{track}')
 
-print('audio files', audio_files)
-print(len(current_playlist))
-
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # total_duration_seconds
-    print(selected_playlist)
-    [play_order, track] = current_playlist[0]
-    print(get_seconds_duration(track))
+    print(current_playlist)
+    total_duration_seconds = sum([get_seconds_duration(file_name) for (order, file_name) in current_playlist])
+    total_duration_seconds = total_duration_seconds + ((len(current_playlist) - 1) * delay_between_audio)
+    print(total_duration_seconds)
     # total_duration hms
 
     # current time
