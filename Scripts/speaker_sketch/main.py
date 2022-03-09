@@ -49,7 +49,6 @@ playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
 with open(playlist_file_path) as target_playlist:
     for track in target_playlist:
         [order, track] = track.strip().split('\t')
-        print(track)
         if track in audio_files:
             current_playlist.append((order, track))
         else:
@@ -73,6 +72,8 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     sleep(delay_at_beginning)
 
     # loop through playlist
+    for (order, file_name) in current_playlist:
+        print(file_name)
 
     # account for device setups with volume drift
     # call([f"osascript -e 'set volume output volume {volume_target}'"], shell=True)
