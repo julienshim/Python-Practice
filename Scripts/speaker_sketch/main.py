@@ -62,10 +62,13 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     
     # total_duration hms
     total_duration_hms = timedelta(seconds=total_duration_seconds)
-    print(total_duration_hms)
-    # current time
 
-    # estimated time
+    # current time
+    time_now = datetime.now()
+
+    # estimated end time
+    end_time = time_now + total_duration_hms
+    print(end_time)
 
     # compensate for playback delay
 
