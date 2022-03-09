@@ -57,12 +57,12 @@ with open(playlist_file_path) as target_playlist:
 
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # total_duration_seconds
-    print(current_playlist)
     total_duration_seconds = sum([get_seconds_duration(file_name) for (order, file_name) in current_playlist])
-    total_duration_seconds = total_duration_seconds + ((len(current_playlist) - 1) * delay_between_audio)
-    print(total_duration_seconds)
+    total_duration_seconds = total_duration_seconds + (len(current_playlist) - 1) * delay_between_audio
+    
     # total_duration hms
-
+    total_duration_hms = timedelta(seconds=total_duration_seconds)
+    print(total_duration_hms)
     # current time
 
     # estimated time
