@@ -68,9 +68,9 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
 
     # estimated end time
     end_time = time_now + total_duration_hms
-    print(end_time)
 
     # compensate for playback delay
+    sleep(delay_at_beginning)
 
     # loop through playlist
 
