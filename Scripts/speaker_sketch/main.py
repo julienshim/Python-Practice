@@ -24,7 +24,7 @@ def get_seconds_duration(track):
     return length
 
 # settings
-delay_between_audio = 30
+delay_between_audio = 1
 delay_at_beginning = 5
 # volume_target = 75
 playlists = [playlist for playlist in listdir(f'{getcwd()}/PLAYLIST')]
@@ -73,10 +73,12 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
 
     # loop through playlist
     for (order, file_name) in current_playlist:
-        print(file_name)
-
-    # account for device setups with volume drift
-    # call([f"osascript -e 'set volume output volume {volume_target}'"], shell=True)
+        # account for device setups with volume drift
+        # call([f"osascript -e 'set volume output volume {volume_target}'"], shell=True)
+        time_now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        print('\t'.join(list(map(lambda i: str(i), [time_now, order, file_name]))))
+        playsound(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{file_name}')
+        sleep(delay_between_audio)
 else:
     print(f'Cannot play audio. {len(warnings)} warnings found: ')
     for index, warning in enumerate(warnings):
