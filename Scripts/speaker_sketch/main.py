@@ -5,12 +5,29 @@ from datetime import datetime, timedelta
 from re import findall
 from mutagen.wave import WAVE
 from subprocess import call
+from argparse import ArgumentParser
 
+parser = ArgumentParser(description='Include test tone prior to running playback')
+parser.add_argument('-t', '--timer', type=str, help='Test tone timer of 5 or 30')
+parser.add_argument('-td', '--timer_delay', type=int, help='Test tone timer delay')
+args = parser.parse_args()
 
-# sleep(15)
-# test_tone = f"./TEST/1kHz_44100Hz_16bit_05sec.wav"
-# playsound(test_tone)
-# sleep(30)
+if args.timer in ["5", "05", "30"] and int(args.timer_delay):
+    is_playing_tone = True
+    while is_playing_tone:
+        timer_ref = {
+            "5": "05",
+            "05": "05",
+            "30": "30"
+        }
+        sleep(args.timer_delay)
+        test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.timer]}sec.wav"
+        playsound(test_tone)
+        is_playing_tone_input = input('Play test tone again? [Y/N] ')
+        if is_playing_tone_input.lower() not in ['y', 'yes', 'n', 'no']:
+            is_playing_tone_input = input('Sorry. I didn\'t get that. Play test tone again? [Y/N] ')
+        elif is_playing_tone_input.lower() in ['n', 'no']:
+            is_playing_tone = False
 
 # functions
 
