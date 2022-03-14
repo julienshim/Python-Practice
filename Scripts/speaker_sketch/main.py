@@ -8,27 +8,26 @@ from subprocess import call
 from argparse import ArgumentParser
 
 parser = ArgumentParser(description='Include test tone prior to running playback')
-parser.add_argument('-tt', '--tone_time', type=str, help='Test tone timer of 5 or 30')
-parser.add_argument('-td', '--tone_delay', type=int, help='Test tone timer delay')
+parser.add_argument('-ttt', '--test_tone_time', type=str, help='Test tone timer of 5 or 30')
+parser.add_argument('-ttd', '--test_tone_delay', type=int, help='Test tone timer delay')
 args = parser.parse_args()
 
-if args.tone_time in ["5", "05", "30"] and int(args.tone_delay):
-    is_playing_tone = True
-    while is_playing_tone:
+is_play_test_tone = True
+
+if args.test_tone_time in ["5", "05", "30"] and int(args.test_tone_delay):
+    while is_play_test_tone:
         timer_ref = {
             "5": "05",
             "05": "05",
             "30": "30"
         }
-        print(f'Playing {args.tone_time}s test tone in {args.tone_delay}s.')
-        sleep(args.tone_delay)
-        test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.tone_time]}sec.wav"
+        print(f'Playing {args.test_tone_time}s 1KHz 44100Hz 16bit test tone in {args.test_tone_delay}s.')
+        sleep(args.test_tone_delay)
+        test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.test_tone_time]}sec.wav"
         playsound(test_tone)
-        is_playing_tone_input = input('Play test tone again? [Y/N] ')
-        if is_playing_tone_input.lower() not in ['y', 'yes', 'n', 'no']:
-            is_playing_tone_input = input('Sorry. I didn\'t get that. Play test tone again? [Y/N] ')
-        elif is_playing_tone_input.lower() in ['n', 'no']:
-            is_playing_tone = False
+        is_play_test_tone_input = input('Press any key to repeat playback of test tone or type "s" to stop. ')
+        if is_play_test_tone_input.lower() in ['s', 'stop']:
+            is_play_test_tone = False
 
 # functions
 
