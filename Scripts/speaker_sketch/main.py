@@ -8,11 +8,11 @@ from subprocess import call
 from argparse import ArgumentParser
 
 parser = ArgumentParser(description='Include test tone prior to running playback')
-parser.add_argument('-t', '--timer', type=str, help='Test tone timer of 5 or 30')
-parser.add_argument('-td', '--timer_delay', type=int, help='Test tone timer delay')
+parser.add_argument('-tt', '--tone_time', type=str, help='Test tone timer of 5 or 30')
+parser.add_argument('-td', '--tone_delay', type=int, help='Test tone timer delay')
 args = parser.parse_args()
 
-if args.timer in ["5", "05", "30"] and int(args.timer_delay):
+if args.tone_time in ["5", "05", "30"] and int(args.tone_delay):
     is_playing_tone = True
     while is_playing_tone:
         timer_ref = {
@@ -20,8 +20,9 @@ if args.timer in ["5", "05", "30"] and int(args.timer_delay):
             "05": "05",
             "30": "30"
         }
-        sleep(args.timer_delay)
-        test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.timer]}sec.wav"
+        print(f'Playing {args.tone_time}s test tone in {args.tone_delay}s.')
+        sleep(args.tone_delay)
+        test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.tone_time]}sec.wav"
         playsound(test_tone)
         is_playing_tone_input = input('Play test tone again? [Y/N] ')
         if is_playing_tone_input.lower() not in ['y', 'yes', 'n', 'no']:
