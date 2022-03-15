@@ -12,9 +12,13 @@ parser.add_argument('-ttt', '--test_tone_time', type=str, help='Test tone timer 
 parser.add_argument('-ttd', '--test_tone_delay', type=int, help='Test tone timer delay')
 args = parser.parse_args()
 
-is_play_test_tone = True
+def print_header(header_string):
+    print(f'\n// MARK: {header_string.upper()}\n')
+
 
 if args.test_tone_time in ["5", "05", "30"] and int(args.test_tone_delay):
+    print_header('test tone')
+    is_play_test_tone = True
     while is_play_test_tone:
         timer_ref = {
             "5": "05",
@@ -47,6 +51,7 @@ delay_at_beginning = 5
 playlists = [playlist for playlist in listdir(f'{getcwd()}/PLAYLIST')]
 
 # display options
+print_header('select playlist')
 for index, playlist in enumerate(playlists):
     option = f'{index + 1}. {playlist}'
     print(option)
