@@ -15,6 +15,9 @@ args = parser.parse_args()
 def print_header(header_string):
     print(f'\n// MARK: {header_string.upper()}\n')
 
+def print_status(status_string):
+    print(f'\nStatus: {status_string}')
+
 
 if args.test_tone_time in ["5", "05", "30"] and int(args.test_tone_delay):
     print_header('test tone')
@@ -29,7 +32,7 @@ if args.test_tone_time in ["5", "05", "30"] and int(args.test_tone_delay):
         sleep(args.test_tone_delay)
         test_tone = f"./TEST/1kHz_44100Hz_16bit_{timer_ref[args.test_tone_time]}sec.wav"
         playsound(test_tone)
-        is_play_test_tone_input = input('Press any key to repeat playback of test tone or type "s" to stop. ')
+        is_play_test_tone_input = input('Press any key to repeat playback of test tone or type "s" to stop: ')
         if is_play_test_tone_input.lower() in ['s', 'stop']:
             is_play_test_tone = False
 
@@ -66,6 +69,7 @@ audio_files = list(filter(filter_hidden, listdir(audio_files_path)))
 # open and verify playlist
 current_playlist = []
 warnings = []
+print_status('Verifying playlist...')
 playlist_file_path = f'{getcwd()}/PLAYLIST/{selected_playlist}'
 
 with open(playlist_file_path) as target_playlist:
@@ -77,6 +81,8 @@ with open(playlist_file_path) as target_playlist:
             warnings.append(f'WARNING: MISSING{track}')
 
 if len(audio_files) == len(current_playlist) and len(warnings) == 0:
+    print_status('Playlist Verified.')
+
     # total_duration_seconds
     total_duration_seconds = sum([get_seconds_duration(file_name) for (order, file_name) in current_playlist])
     total_duration_seconds = total_duration_seconds + (len(current_playlist) - 1) * delay_between_audio
@@ -90,6 +96,7 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # estimated end time
     end_time = time_now + total_duration_hms
 
+    print_header(f'starting playback')
     # compensate for playback delay
     sleep(delay_at_beginning)
 
