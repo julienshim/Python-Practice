@@ -80,12 +80,10 @@ with open(playlist_file_path) as target_playlist:
         else:
             warnings.append(f'WARNING: MISSING{track}')
 
-if len(audio_files) == len(current_playlist) and len(warnings) == 0:
-    print_status('Playlist Verified.')
-
+def get_time_info(current_position):
     # total_duration_seconds
-    total_duration_seconds = sum([get_seconds_duration(file_name) for (order, file_name) in current_playlist])
-    total_duration_seconds = total_duration_seconds + (len(current_playlist) - 1) * delay_between_audio
+    total_duration_seconds = sum([get_seconds_duration(file_name) for (order, file_name) in current_playlist[current_position:]])
+    total_duration_seconds = total_duration_seconds + (len(current_playlist[current_position:]) - 1) * delay_between_audio
     
     # total_duration hms
     total_duration_hms = timedelta(seconds=total_duration_seconds)
@@ -96,16 +94,21 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
     # estimated end time
     end_time = time_now + total_duration_hms
 
+    return [total_duration_hms, end_time]
+
+if len(audio_files) == len(current_playlist) and len(warnings) == 0:
+    print_status('Playlist Verified.')
     print_header(f'starting playback')
     # compensate for playback delay
     sleep(delay_at_beginning)
 
     # loop through playlist
-    for (order, file_name) in current_playlist:
+    for index, (order, file_name) in enumerate(current_playlist):
+        [total_duration_hms, end_time] = get_time_info(index)
         # account for device setups with volume drift
         # call([f"osascript -e 'set volume output volume {volume_target}'"], shell=True)
         time_now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-        print('\t'.join(list(map(lambda i: str(i), [time_now, order, file_name]))))
+        print('\t'.join(list(map(lambda i: str(i), [time_now, order, file_name, f"Time Left: {total_duration_hms}", f"Adjusted End Time: {end_time}"]))))
         playsound(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{file_name}')
         sleep(delay_between_audio)
 else:
