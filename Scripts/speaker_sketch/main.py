@@ -59,8 +59,11 @@ for index, playlist in enumerate(playlists):
     option = f'{index + 1}. {playlist}'
     print(option)
 
-selected_index = int(input(f'Select a playlist [1-{len(playlists)}]: ')) - 1
-selected_playlist = playlists[selected_index]
+selected_index = input(f'Select a playlist [1-{len(playlists)}]: ')
+while not (selected_index.isnumeric() and int(selected_index) in list(range(1, len(playlists) + 1))):
+    selected_index = input(f'Please make a valid playlist selection [1-{len(playlists)}]: ')
+
+selected_playlist = playlists[int(selected_index) - 1]
 
 # audio_files_path
 audio_files_path = f'{getcwd()}/AUDIO/{selected_playlist.replace(".txt", "")}'
