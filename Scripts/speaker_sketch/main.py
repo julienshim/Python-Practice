@@ -118,5 +118,5 @@ else:
     print_header('len(warnings)} missing tracks found')
     for warning in warnings:
         print(f'- {warning}')
-    print(f'\nBe sure the above tracks are in the {selected_playlist.split(".")[0]} AUDIO folder, then try again. Exiting...\n')
+    print(f'\nBe sure the above tracks are in the {selected_playlist.replace(".txt", "")} AUDIO folder, then try again. Exiting...\n')
 
