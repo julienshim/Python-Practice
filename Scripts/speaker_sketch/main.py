@@ -81,7 +81,7 @@ with open(playlist_file_path) as target_playlist:
         if track in audio_files:
             current_playlist.append((order, track))
         else:
-            warnings.append(f'WARNING: MISSING{track}')
+            warnings.append(f'MISSING{track}')
 
 def get_time_info(current_position):
     # total_duration_seconds
@@ -115,7 +115,8 @@ if len(audio_files) == len(current_playlist) and len(warnings) == 0:
         playsound(f'./AUDIO/{selected_playlist.replace(".txt", "")}/{file_name}')
         sleep(delay_between_audio)
 else:
-    print(f'Cannot play audio. {len(warnings)} warnings found: ')
-    for index, warning in enumerate(warnings):
-        print(f'{index+1}. {warning}')
+    print_header('len(warnings)} missing tracks found')
+    for warning in warnings:
+        print(f'- {warning}')
+    print(f'\nBe sure the above tracks are in the {selected_playlist.split(".")[0]} AUDIO folder, then try again. Exiting...\n')
 
